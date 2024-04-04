@@ -1,6 +1,7 @@
 # MultiOn Node Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://buildwithfern.com/)
+[![npm shield](https://img.shields.io/npm/v/multion)](https://www.npmjs.com/package/multion)
 
 The MultiOn Node.js library provides convenient access to the MultiOn API from JavaScript/TypeScript.
 
