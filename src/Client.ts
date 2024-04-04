@@ -47,8 +47,8 @@ export class MultiOnClient {
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.2.0",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.2.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -125,8 +125,8 @@ export class MultiOnClient {
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.2.0",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.2.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -188,7 +188,7 @@ export class MultiOnClient {
     }
 
     protected async _getCustomAuthorizationHeaders() {
-        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        const apiKeyValue = (await core.Supplier.get(this._options.apiKey)) ?? process?.env["MULTION_API_KEY"];
         return { X_MULTION_API_KEY: apiKeyValue };
     }
 }
