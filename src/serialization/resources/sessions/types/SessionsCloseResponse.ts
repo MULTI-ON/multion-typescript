@@ -6,15 +6,15 @@ import * as serializers from "../../..";
 import * as MultiOn from "../../../../api";
 import * as core from "../../../../core";
 
-export const SessionsCloneResponse: core.serialization.ObjectSchema<
-    serializers.SessionsCloneResponse.Raw,
-    MultiOn.SessionsCloneResponse
+export const SessionsCloseResponse: core.serialization.ObjectSchema<
+    serializers.SessionsCloseResponse.Raw,
+    MultiOn.SessionsCloseResponse
 > = core.serialization.object({
     status: core.serialization.string(),
     sessionId: core.serialization.property("session_id", core.serialization.string()),
 });
 
-export declare namespace SessionsCloneResponse {
+export declare namespace SessionsCloseResponse {
     interface Raw {
         status: string;
         session_id: string;

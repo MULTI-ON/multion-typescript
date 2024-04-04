@@ -1,3 +1,3 @@
-export * from "./SessionsCloneResponse";
-export * from "./SessionsRetrieveScreenshotResponse";
+export * from "./SessionsCloseResponse";
+export * from "./SessionsScreenshotResponse";
 export * from "./SessionsListResponse";

@@ -272,7 +272,7 @@ await multiOn.sessions.step("session_id", {});
 </details>
 
 
-<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">clone</a>(sessionId) -> MultiOn.SessionsCloneResponse</code> </summary>
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">close</a>(sessionId) -> MultiOn.SessionsCloseResponse</code> </summary>
 
 <dl>
 
@@ -289,7 +289,7 @@ await multiOn.sessions.step("session_id", {});
 <dd>
 
 ```ts
-await multiOn.sessions.clone("session_id");
+await multiOn.sessions.close("session_id");
 ```
 
 </dd>
@@ -342,7 +342,7 @@ await multiOn.sessions.clone("session_id");
 </details>
 
 
-<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">retrieveScreenshot</a>(sessionId) -> MultiOn.SessionsRetrieveScreenshotResponse</code> </summary>
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">screenshot</a>(sessionId) -> MultiOn.SessionsScreenshotResponse</code> </summary>
 
 <dl>
 
@@ -379,7 +379,7 @@ This function is used to get a screenshot for a website.
 <dd>
 
 ```ts
-await multiOn.sessions.retrieveScreenshot("session_id");
+await multiOn.sessions.screenshot("session_id");
 ```
 
 </dd>

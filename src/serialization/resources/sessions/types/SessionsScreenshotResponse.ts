@@ -6,14 +6,14 @@ import * as serializers from "../../..";
 import * as MultiOn from "../../../../api";
 import * as core from "../../../../core";
 
-export const SessionsRetrieveScreenshotResponse: core.serialization.ObjectSchema<
-    serializers.SessionsRetrieveScreenshotResponse.Raw,
-    MultiOn.SessionsRetrieveScreenshotResponse
+export const SessionsScreenshotResponse: core.serialization.ObjectSchema<
+    serializers.SessionsScreenshotResponse.Raw,
+    MultiOn.SessionsScreenshotResponse
 > = core.serialization.object({
     screenshot: core.serialization.string(),
 });
 
-export declare namespace SessionsRetrieveScreenshotResponse {
+export declare namespace SessionsScreenshotResponse {
     interface Raw {
         screenshot: string;
     }

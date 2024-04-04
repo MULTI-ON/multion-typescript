@@ -45,7 +45,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -120,7 +120,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -179,12 +179,12 @@ export class Sessions {
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
-     *     await multiOn.sessions.clone("session_id")
+     *     await multiOn.sessions.close("session_id")
      */
-    public async clone(
+    public async close(
         sessionId: string,
         requestOptions?: Sessions.RequestOptions
-    ): Promise<MultiOn.SessionsCloneResponse> {
+    ): Promise<MultiOn.SessionsCloseResponse> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MultiOnEnvironment.Default,
@@ -194,7 +194,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -204,7 +204,7 @@ export class Sessions {
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.SessionsCloneResponse.parseOrThrow(_response.body, {
+            return await serializers.SessionsCloseResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -253,12 +253,12 @@ export class Sessions {
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
-     *     await multiOn.sessions.retrieveScreenshot("session_id")
+     *     await multiOn.sessions.screenshot("session_id")
      */
-    public async retrieveScreenshot(
+    public async screenshot(
         sessionId: string,
         requestOptions?: Sessions.RequestOptions
-    ): Promise<MultiOn.SessionsRetrieveScreenshotResponse> {
+    ): Promise<MultiOn.SessionsScreenshotResponse> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MultiOnEnvironment.Default,
@@ -268,7 +268,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -278,7 +278,7 @@ export class Sessions {
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.SessionsRetrieveScreenshotResponse.parseOrThrow(_response.body, {
+            return await serializers.SessionsScreenshotResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -332,7 +332,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
