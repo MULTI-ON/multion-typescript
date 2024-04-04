@@ -5,17 +5,18 @@
 import * as serializers from "../../..";
 import * as MultiOn from "../../../../api";
 import * as core from "../../../../core";
-import { SessionsCloneResponseResponse } from "./SessionsCloneResponseResponse";
 
 export const SessionsCloneResponse: core.serialization.ObjectSchema<
     serializers.SessionsCloneResponse.Raw,
     MultiOn.SessionsCloneResponse
 > = core.serialization.object({
-    response: SessionsCloneResponseResponse,
+    status: core.serialization.string(),
+    sessionId: core.serialization.property("session_id", core.serialization.string()),
 });
 
 export declare namespace SessionsCloneResponse {
     interface Raw {
-        response: SessionsCloneResponseResponse.Raw;
+        status: string;
+        session_id: string;
     }
 }

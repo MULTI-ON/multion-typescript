@@ -8,7 +8,7 @@ export interface BrowseOutput {
     /** The final status of the browsing session. */
     status: string;
     /** The last accessed URL during the session. */
-    lastUrl?: string;
+    url?: string;
     /** Extracted text content from the final page. */
     pageContent?: string;
     /** image url of the screenshot taken during the session. */

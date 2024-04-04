@@ -5,15 +5,22 @@
 import * as serializers from "..";
 import * as MultiOn from "../../api";
 import * as core from "../../core";
-import { SessionCreatedResponse } from "./SessionCreatedResponse";
 
 export const SessionCreated: core.serialization.ObjectSchema<serializers.SessionCreated.Raw, MultiOn.SessionCreated> =
     core.serialization.object({
-        response: SessionCreatedResponse,
+        status: core.serialization.string(),
+        message: core.serialization.string(),
+        sessionId: core.serialization.property("session_id", core.serialization.string()),
+        url: core.serialization.string(),
+        screenshot: core.serialization.string(),
     });
 
 export declare namespace SessionCreated {
     interface Raw {
-        response: SessionCreatedResponse.Raw;
+        status: string;
+        message: string;
+        session_id: string;
+        url: string;
+        screenshot: string;
     }
 }

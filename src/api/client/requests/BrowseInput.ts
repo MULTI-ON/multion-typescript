@@ -13,6 +13,8 @@ export interface BrowseInput {
     cmd?: string;
     /** The URL to start or continue browsing from. */
     url: string;
+    /** Boolean flag to indicate if session to be run locally or in the cloud (Default: False) */
+    local?: boolean;
     sessionId?: string;
     /** Maximum number of steps to execute. (Default: 20) */
     maxSteps?: number;

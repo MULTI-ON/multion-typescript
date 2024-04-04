@@ -5,15 +5,23 @@
 import * as serializers from "..";
 import * as MultiOn from "../../api";
 import * as core from "../../core";
-import { RetrieveOutputResponse } from "./RetrieveOutputResponse";
 
 export const RetrieveOutput: core.serialization.ObjectSchema<serializers.RetrieveOutput.Raw, MultiOn.RetrieveOutput> =
     core.serialization.object({
-        response: RetrieveOutputResponse,
+        message: core.serialization.string(),
+        url: core.serialization.string(),
+        screenshot: core.serialization.string().optional(),
+        linkDict: core.serialization.property(
+            "link_dict",
+            core.serialization.record(core.serialization.string(), core.serialization.string())
+        ),
     });
 
 export declare namespace RetrieveOutput {
     interface Raw {
-        response: RetrieveOutputResponse.Raw;
+        message: string;
+        url: string;
+        screenshot?: string | null;
+        link_dict: Record<string, string>;
     }
 }

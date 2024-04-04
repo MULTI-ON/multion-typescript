@@ -10,6 +10,7 @@ export const BrowseInput: core.serialization.Schema<serializers.BrowseInput.Raw,
     core.serialization.object({
         cmd: core.serialization.string().optional(),
         url: core.serialization.string(),
+        local: core.serialization.boolean().optional(),
         sessionId: core.serialization.property("session_id", core.serialization.string().optional()),
         maxSteps: core.serialization.property("max_steps", core.serialization.number().optional()),
         stream: core.serialization.boolean().optional(),
@@ -20,6 +21,7 @@ export declare namespace BrowseInput {
     interface Raw {
         cmd?: string | null;
         url: string;
+        local?: boolean | null;
         session_id?: string | null;
         max_steps?: number | null;
         stream?: boolean | null;

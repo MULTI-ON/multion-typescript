@@ -5,17 +5,16 @@
 import * as serializers from "../../..";
 import * as MultiOn from "../../../../api";
 import * as core from "../../../../core";
-import { SessionsRetrieveScreenshotResponseResponse } from "./SessionsRetrieveScreenshotResponseResponse";
 
 export const SessionsRetrieveScreenshotResponse: core.serialization.ObjectSchema<
     serializers.SessionsRetrieveScreenshotResponse.Raw,
     MultiOn.SessionsRetrieveScreenshotResponse
 > = core.serialization.object({
-    response: SessionsRetrieveScreenshotResponseResponse,
+    screenshot: core.serialization.string(),
 });
 
 export declare namespace SessionsRetrieveScreenshotResponse {
     interface Raw {
-        response: SessionsRetrieveScreenshotResponseResponse.Raw;
+        screenshot: string;
     }
 }

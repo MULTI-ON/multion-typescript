@@ -10,7 +10,7 @@ export const BrowseOutput: core.serialization.ObjectSchema<serializers.BrowseOut
     core.serialization.object({
         message: core.serialization.string().optional(),
         status: core.serialization.string(),
-        lastUrl: core.serialization.property("last_url", core.serialization.string().optional()),
+        url: core.serialization.string().optional(),
         pageContent: core.serialization.property("page_content", core.serialization.string().optional()),
         screenshot: core.serialization.string(),
         sessionId: core.serialization.property("session_id", core.serialization.string()),
@@ -20,7 +20,7 @@ export declare namespace BrowseOutput {
     interface Raw {
         message?: string | null;
         status: string;
-        last_url?: string | null;
+        url?: string | null;
         page_content?: string | null;
         screenshot: string;
         session_id: string;

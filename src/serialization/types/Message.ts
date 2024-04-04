@@ -11,17 +11,19 @@ export const Message: core.serialization.ObjectSchema<serializers.Message.Raw, M
     core.serialization.object({
         cmd: core.serialization.string().optional(),
         url: core.serialization.string(),
+        local: core.serialization.boolean().optional(),
         stream: core.serialization.boolean().optional(),
         browserParams: core.serialization.property("browser_params", MessageBrowserParams.optional()),
-        includeScreenshot: core.serialization.boolean().optional(),
+        includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
     });
 
 export declare namespace Message {
     interface Raw {
         cmd?: string | null;
         url: string;
+        local?: boolean | null;
         stream?: boolean | null;
         browser_params?: MessageBrowserParams.Raw | null;
-        includeScreenshot?: boolean | null;
+        include_screenshot?: boolean | null;
     }
 }
