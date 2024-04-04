@@ -8,7 +8,7 @@ import * as core from "../../../core";
 
 export const BrowseInput: core.serialization.Schema<serializers.BrowseInput.Raw, MultiOn.BrowseInput> =
     core.serialization.object({
-        cmd: core.serialization.string().optional(),
+        cmd: core.serialization.string(),
         url: core.serialization.string(),
         local: core.serialization.boolean().optional(),
         sessionId: core.serialization.property("session_id", core.serialization.string().optional()),
@@ -19,7 +19,7 @@ export const BrowseInput: core.serialization.Schema<serializers.BrowseInput.Raw,
 
 export declare namespace BrowseInput {
     interface Raw {
-        cmd?: string | null;
+        cmd: string;
         url: string;
         local?: boolean | null;
         session_id?: string | null;

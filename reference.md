@@ -1,5 +1,5 @@
 
-## Browse URL
+## Browse
 
 
 <details><summary> <code>multiOn.<a href="./src/Client.ts">browse</a>({ ...params }) -> MultiOn.BrowseOutput</code> </summary>
@@ -18,7 +18,7 @@
 
 <dd>
 
-Allows for browsing the web using detailed natural language instructions. The function supports session continuation, automatic query generation, and iterative instruction execution based on the `CONTINUE` status.
+Allows for browsing the web using detailed natural language instructions. The function supports multi-step command execution based on the `CONTINUE` status.
 
 </dd>
 
@@ -40,6 +40,7 @@ Allows for browsing the web using detailed natural language instructions. The fu
 
 ```ts
 await multiOn.browse({
+    cmd: "cmd",
     url: "url"
 });
 ```
@@ -64,115 +65,6 @@ await multiOn.browse({
 
 
 **request: `MultiOn.BrowseInput`** 
-
-
-</dd>
-
-</dl>
-
-<dl>
-
-<dd>
-
-
-**requestOptions: `MultiOnClient.RequestOptions`** 
-
-
-</dd>
-
-</dl>
-
-</dd>
-
-</dl>
-
-
-
-</dd>
-
-</dl>
-</details>
-
-
-
-
-## Retrieve Webpage
-
-
-<details><summary> <code>multiOn.<a href="./src/Client.ts">retrieve</a>(sessionId, { ...params }) -> MultiOn.RetrieveOutput</code> </summary>
-
-<dl>
-
-<dd>
-
-#### 📝 Description
-
-<dl>
-
-<dd>
-
-<dl>
-
-<dd>
-
-Retrieve information on a webpage based on a user query and url
-
-</dd>
-
-</dl>
-
-</dd>
-
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-
-<dd>
-
-<dl>
-
-<dd>
-
-```ts
-await multiOn.retrieve("session_id", {
-    url: "url"
-});
-```
-
-</dd>
-
-</dl>
-
-</dd>
-
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-
-<dd>
-
-<dl>
-
-<dd>
-
-
-**sessionId: `string`** 
-
-
-</dd>
-
-</dl>
-
-<dl>
-
-<dd>
-
-
-**request: `MultiOn.Message`** 
 
 
 </dd>
@@ -245,9 +137,7 @@ Creates a new session and returns session details including a unique session ID.
 <dd>
 
 ```ts
-await multiOn.sessions.create({
-    url: "url"
-});
+await multiOn.sessions.create({});
 ```
 
 </dd>
@@ -269,7 +159,7 @@ await multiOn.sessions.create({
 <dd>
 
 
-**request: `MultiOn.Message`** 
+**request: `MultiOn.SessionInput`** 
 
 
 </dd>
@@ -317,9 +207,7 @@ await multiOn.sessions.create({
 <dd>
 
 ```ts
-await multiOn.sessions.step("session_id", {
-    url: "url"
-});
+await multiOn.sessions.step("session_id", {});
 ```
 
 </dd>
@@ -353,7 +241,7 @@ await multiOn.sessions.step("session_id", {
 <dd>
 
 
-**request: `MultiOn.Message`** 
+**request: `MultiOn.SessionInput`** 
 
 
 </dd>
@@ -454,7 +342,7 @@ await multiOn.sessions.clone("session_id");
 </details>
 
 
-<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">retrieveScreenshot</a>(sessionId, { ...params }) -> MultiOn.SessionsRetrieveScreenshotResponse</code> </summary>
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">retrieveScreenshot</a>(sessionId) -> MultiOn.SessionsRetrieveScreenshotResponse</code> </summary>
 
 <dl>
 
@@ -491,9 +379,7 @@ This function is used to get a screenshot for a website.
 <dd>
 
 ```ts
-await multiOn.sessions.retrieveScreenshot("session_id", {
-    url: "url"
-});
+await multiOn.sessions.retrieveScreenshot("session_id");
 ```
 
 </dd>
@@ -516,18 +402,6 @@ await multiOn.sessions.retrieveScreenshot("session_id", {
 
 
 **sessionId: `string`** 
-
-
-</dd>
-
-</dl>
-
-<dl>
-
-<dd>
-
-
-**request: `MultiOn.Message`** 
 
 
 </dd>

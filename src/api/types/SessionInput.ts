@@ -4,16 +4,15 @@
 
 import * as MultiOn from "..";
 
-export interface Message {
+export interface SessionInput {
     /** A specific natural language instruction for the next step. */
     cmd?: string;
-    /** The URL to use for this step. */
-    url: string;
+    url?: string;
     /** Boolean flag to indicate if session to be run locally or in the cloud (Default: False) */
     local?: boolean;
     /** Boolean flag to stream results back to the client (Default: False) */
     stream?: boolean;
     /** Object containing height and width for the browser screen size. */
-    browserParams?: MultiOn.MessageBrowserParams;
+    browserParams?: MultiOn.SessionInputBrowserParams;
     includeScreenshot?: boolean;
 }

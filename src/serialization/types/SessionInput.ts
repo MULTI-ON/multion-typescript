@@ -5,25 +5,25 @@
 import * as serializers from "..";
 import * as MultiOn from "../../api";
 import * as core from "../../core";
-import { MessageBrowserParams } from "./MessageBrowserParams";
+import { SessionInputBrowserParams } from "./SessionInputBrowserParams";
 
-export const Message: core.serialization.ObjectSchema<serializers.Message.Raw, MultiOn.Message> =
+export const SessionInput: core.serialization.ObjectSchema<serializers.SessionInput.Raw, MultiOn.SessionInput> =
     core.serialization.object({
         cmd: core.serialization.string().optional(),
-        url: core.serialization.string(),
+        url: core.serialization.string().optional(),
         local: core.serialization.boolean().optional(),
         stream: core.serialization.boolean().optional(),
-        browserParams: core.serialization.property("browser_params", MessageBrowserParams.optional()),
+        browserParams: core.serialization.property("browser_params", SessionInputBrowserParams.optional()),
         includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
     });
 
-export declare namespace Message {
+export declare namespace SessionInput {
     interface Raw {
         cmd?: string | null;
-        url: string;
+        url?: string | null;
         local?: boolean | null;
         stream?: boolean | null;
-        browser_params?: MessageBrowserParams.Raw | null;
+        browser_params?: SessionInputBrowserParams.Raw | null;
         include_screenshot?: boolean | null;
     }
 }

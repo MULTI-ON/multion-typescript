@@ -6,15 +6,15 @@ import * as serializers from "..";
 import * as MultiOn from "../../api";
 import * as core from "../../core";
 
-export const MessageBrowserParams: core.serialization.ObjectSchema<
-    serializers.MessageBrowserParams.Raw,
-    MultiOn.MessageBrowserParams
+export const SessionInputBrowserParams: core.serialization.ObjectSchema<
+    serializers.SessionInputBrowserParams.Raw,
+    MultiOn.SessionInputBrowserParams
 > = core.serialization.object({
     height: core.serialization.number().optional(),
     width: core.serialization.number().optional(),
 });
 
-export declare namespace MessageBrowserParams {
+export declare namespace SessionInputBrowserParams {
     interface Raw {
         height?: number | null;
         width?: number | null;

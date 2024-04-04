@@ -11,6 +11,6 @@ export interface SessionStepSuccess {
     sessionId: string;
     /** The URL associated with the session. */
     url: string;
-    /** A base64 encoded string of the screenshot, empty if not available. */
+    /** image url of the screenshot taken during the session. */
     screenshot: string;
 }

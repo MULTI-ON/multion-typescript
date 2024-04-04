@@ -4,13 +4,13 @@
 
 export interface BrowseOutput {
     /** The final message or result of the browsing session. */
-    message?: string;
+    message: string;
     /** The final status of the browsing session. */
     status: string;
-    /** The last accessed URL during the session. */
-    url?: string;
-    /** Extracted text content from the final page. */
-    pageContent?: string;
+    /** The current URL of the session. */
+    url: string;
+    /** Extracted text content from the current page. */
+    pageContent: string;
     /** image url of the screenshot taken during the session. */
     screenshot: string;
     /** The unique identifier for the session. */

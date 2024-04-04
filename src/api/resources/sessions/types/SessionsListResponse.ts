@@ -3,6 +3,6 @@
  */
 
 export interface SessionsListResponse {
-    /** The list of session IDs. */
+    /** The list of active session IDs. */
     sessionIds: string[];
 }

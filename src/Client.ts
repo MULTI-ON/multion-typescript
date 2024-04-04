@@ -27,11 +27,12 @@ export class MultiOnClient {
     constructor(protected readonly _options: MultiOnClient.Options) {}
 
     /**
-     * Allows for browsing the web using detailed natural language instructions. The function supports session continuation, automatic query generation, and iterative instruction execution based on the `CONTINUE` status.
+     * Allows for browsing the web using detailed natural language instructions. The function supports multi-step command execution based on the `CONTINUE` status.
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
      *     await multiOn.browse({
+     *         cmd: "cmd",
      *         url: "url"
      *     })
      */
@@ -42,13 +43,13 @@ export class MultiOnClient {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MultiOnEnvironment.Default,
-                "api/v1/browse"
+                "v1/web/browse"
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.2.2b0",
+                "X-Fern-SDK-Name": "multion",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -60,84 +61,6 @@ export class MultiOnClient {
         });
         if (_response.ok) {
             return await serializers.BrowseOutput.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 422:
-                    throw new MultiOn.UnprocessableEntityError(
-                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            skipValidation: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                default:
-                    throw new errors.MultiOnError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MultiOnError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MultiOnTimeoutError();
-            case "unknown":
-                throw new errors.MultiOnError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Retrieve information on a webpage based on a user query and url
-     * @throws {@link MultiOn.UnprocessableEntityError}
-     *
-     * @example
-     *     await multiOn.retrieve("session_id", {
-     *         url: "url"
-     *     })
-     */
-    public async retrieve(
-        sessionId: string,
-        request: MultiOn.Message,
-        requestOptions?: MultiOnClient.RequestOptions
-    ): Promise<MultiOn.RetrieveOutput> {
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MultiOnEnvironment.Default,
-                `api/v1/retrieve/${sessionId}`
-            ),
-            method: "POST",
-            headers: {
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.2.2b0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...(await this._getCustomAuthorizationHeaders()),
-            },
-            contentType: "application/json",
-            body: await serializers.Message.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-        });
-        if (_response.ok) {
-            return await serializers.RetrieveOutput.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

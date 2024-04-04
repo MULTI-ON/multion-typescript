@@ -8,20 +8,20 @@ import * as core from "../../core";
 
 export const BrowseOutput: core.serialization.ObjectSchema<serializers.BrowseOutput.Raw, MultiOn.BrowseOutput> =
     core.serialization.object({
-        message: core.serialization.string().optional(),
+        message: core.serialization.string(),
         status: core.serialization.string(),
-        url: core.serialization.string().optional(),
-        pageContent: core.serialization.property("page_content", core.serialization.string().optional()),
+        url: core.serialization.string(),
+        pageContent: core.serialization.property("page_content", core.serialization.string()),
         screenshot: core.serialization.string(),
         sessionId: core.serialization.property("session_id", core.serialization.string()),
     });
 
 export declare namespace BrowseOutput {
     interface Raw {
-        message?: string | null;
+        message: string;
         status: string;
-        url?: string | null;
-        page_content?: string | null;
+        url: string;
+        page_content: string;
         screenshot: string;
         session_id: string;
     }

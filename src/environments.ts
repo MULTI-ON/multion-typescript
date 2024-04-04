@@ -3,7 +3,7 @@
  */
 
 export const MultiOnEnvironment = {
-    Default: "https://api.multion.ai/public",
+    Default: "https://api.multion.ai/v1/web",
 } as const;
 
 export type MultiOnEnvironment = typeof MultiOnEnvironment.Default;

@@ -5,7 +5,7 @@
 /**
  * Object containing height and width for the browser screen size.
  */
-export interface MessageBrowserParams {
+export interface SessionInputBrowserParams {
     height?: number;
     width?: number;
 }

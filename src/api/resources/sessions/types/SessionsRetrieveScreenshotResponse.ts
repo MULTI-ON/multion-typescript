@@ -3,6 +3,6 @@
  */
 
 export interface SessionsRetrieveScreenshotResponse {
-    /** A base64 encoded string of the screenshot, empty if not available. */
+    /** Image url of the screenshot taken during the session. */
     screenshot: string;
 }
