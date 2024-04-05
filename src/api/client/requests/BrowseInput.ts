@@ -5,21 +5,20 @@
 /**
  * @example
  *     {
- *         cmd: "cmd",
- *         url: "url"
+ *         cmd: "cmd"
  *     }
  */
 export interface BrowseInput {
-    /** The command for the agent to carry out (Default: www.google.com) */
+    /** A specific natural language instruction for the agent to execute */
     cmd: string;
-    /** The URL to start or continue browsing from. */
-    url: string;
+    /** The URL to start or continue browsing from. (Default: google.com) */
+    url?: string;
     /** Boolean flag to indicate if session to be run locally or in the cloud (Default: False) */
     local?: boolean;
+    /** Continues the session with session_id if provided. */
     sessionId?: string;
     /** Maximum number of steps to execute. (Default: 20) */
     maxSteps?: number;
-    /** Boolean flag to stream results back to the client (Default: False) */
-    stream?: boolean;
+    /** Boolean flag to include a screenshot of the final page. */
     includeScreenshot?: boolean;
 }

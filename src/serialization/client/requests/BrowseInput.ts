@@ -9,22 +9,20 @@ import * as core from "../../../core";
 export const BrowseInput: core.serialization.Schema<serializers.BrowseInput.Raw, MultiOn.BrowseInput> =
     core.serialization.object({
         cmd: core.serialization.string(),
-        url: core.serialization.string(),
+        url: core.serialization.string().optional(),
         local: core.serialization.boolean().optional(),
         sessionId: core.serialization.property("session_id", core.serialization.string().optional()),
         maxSteps: core.serialization.property("max_steps", core.serialization.number().optional()),
-        stream: core.serialization.boolean().optional(),
         includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
     });
 
 export declare namespace BrowseInput {
     interface Raw {
         cmd: string;
-        url: string;
+        url?: string | null;
         local?: boolean | null;
         session_id?: string | null;
         max_steps?: number | null;
-        stream?: boolean | null;
         include_screenshot?: boolean | null;
     }
 }

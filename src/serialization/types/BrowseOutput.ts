@@ -11,7 +11,6 @@ export const BrowseOutput: core.serialization.ObjectSchema<serializers.BrowseOut
         message: core.serialization.string(),
         status: core.serialization.string(),
         url: core.serialization.string(),
-        pageContent: core.serialization.property("page_content", core.serialization.string()),
         screenshot: core.serialization.string(),
         sessionId: core.serialization.property("session_id", core.serialization.string()),
     });
@@ -21,7 +20,6 @@ export declare namespace BrowseOutput {
         message: string;
         status: string;
         url: string;
-        page_content: string;
         screenshot: string;
         session_id: string;
     }

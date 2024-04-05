@@ -30,10 +30,12 @@ export class Sessions {
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
-     *     await multiOn.sessions.create({})
+     *     await multiOn.sessions.create({
+     *         url: "url"
+     *     })
      */
     public async create(
-        request: MultiOn.SessionInput,
+        request: MultiOn.CreateSessionInput,
         requestOptions?: Sessions.RequestOptions
     ): Promise<MultiOn.SessionCreated> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -45,13 +47,13 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.SessionInput.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.CreateSessionInput.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -101,14 +103,17 @@ export class Sessions {
     }
 
     /**
+     * Allows for browsing the web using detailed natural language instructions in a step mode for a session with a given session ID
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
-     *     await multiOn.sessions.step("session_id", {})
+     *     await multiOn.sessions.step("session_id", {
+     *         cmd: "cmd"
+     *     })
      */
     public async step(
         sessionId: string,
-        request: MultiOn.SessionInput,
+        request: MultiOn.StepSessionInput,
         requestOptions?: Sessions.RequestOptions
     ): Promise<MultiOn.SessionStepSuccess> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -120,13 +125,13 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.SessionInput.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.StepSessionInput.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -176,6 +181,7 @@ export class Sessions {
     }
 
     /**
+     * Closes the session.
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
@@ -194,7 +200,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -249,7 +255,7 @@ export class Sessions {
     }
 
     /**
-     * This function is used to get a screenshot for a website.
+     * Retrieve the screenshot of the session.
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
@@ -268,7 +274,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -322,6 +328,12 @@ export class Sessions {
         }
     }
 
+    /**
+     * Retrieve a list of active session IDs.
+     *
+     * @example
+     *     await multiOn.sessions.list()
+     */
     public async list(requestOptions?: Sessions.RequestOptions): Promise<MultiOn.SessionsListResponse> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
@@ -332,7 +344,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

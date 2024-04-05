@@ -40,8 +40,7 @@ Allows for browsing the web using detailed natural language instructions. The fu
 
 ```ts
 await multiOn.browse({
-    cmd: "cmd",
-    url: "url"
+    cmd: "cmd"
 });
 ```
 
@@ -137,7 +136,9 @@ Creates a new session and returns session details including a unique session ID.
 <dd>
 
 ```ts
-await multiOn.sessions.create({});
+await multiOn.sessions.create({
+    url: "url"
+});
 ```
 
 </dd>
@@ -159,7 +160,7 @@ await multiOn.sessions.create({});
 <dd>
 
 
-**request: `MultiOn.SessionInput`** 
+**request: `MultiOn.CreateSessionInput`** 
 
 
 </dd>
@@ -196,6 +197,26 @@ await multiOn.sessions.create({});
 
 <dd>
 
+#### 📝 Description
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+Allows for browsing the web using detailed natural language instructions in a step mode for a session with a given session ID
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -207,7 +228,9 @@ await multiOn.sessions.create({});
 <dd>
 
 ```ts
-await multiOn.sessions.step("session_id", {});
+await multiOn.sessions.step("session_id", {
+    cmd: "cmd"
+});
 ```
 
 </dd>
@@ -241,7 +264,7 @@ await multiOn.sessions.step("session_id", {});
 <dd>
 
 
-**request: `MultiOn.SessionInput`** 
+**request: `MultiOn.StepSessionInput`** 
 
 
 </dd>
@@ -277,6 +300,26 @@ await multiOn.sessions.step("session_id", {});
 <dl>
 
 <dd>
+
+#### 📝 Description
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+Closes the session.
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
 
 #### 🔌 Usage
 
@@ -358,7 +401,7 @@ await multiOn.sessions.close("session_id");
 
 <dd>
 
-This function is used to get a screenshot for a website.
+Retrieve the screenshot of the session.
 
 </dd>
 
@@ -437,6 +480,26 @@ await multiOn.sessions.screenshot("session_id");
 <dl>
 
 <dd>
+
+#### 📝 Description
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+Retrieve a list of active session IDs.
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
 
 #### 🔌 Usage
 
