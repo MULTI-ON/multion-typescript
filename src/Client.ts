@@ -35,7 +35,8 @@ export class MultiOnClient {
      *
      * @example
      *     await multiOn.browse({
-     *         cmd: "cmd"
+     *         cmd: "find the top post on hackernews",
+     *         url: "https://news.ycombinator.com/"
      *     })
      */
     public async browse(
@@ -51,7 +52,7 @@ export class MultiOnClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "0.5.0",
+                "X-Fern-SDK-Version": "1.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

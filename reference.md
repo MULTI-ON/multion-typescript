@@ -40,7 +40,8 @@ Allows for browsing the web using detailed natural language instructions. The fu
 
 ```ts
 await multiOn.browse({
-    cmd: "cmd"
+    cmd: "find the top post on hackernews",
+    url: "https://news.ycombinator.com/"
 });
 ```
 

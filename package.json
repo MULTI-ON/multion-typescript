@@ -1,6 +1,6 @@
 {
     "name": "multion",
-    "version": "0.5.0",
+    "version": "1.0.0",
     "private": false,
     "repository": "https://github.com/MULTI-ON/multion-typescript",
     "main": "./index.js",

@@ -5,7 +5,8 @@
 /**
  * @example
  *     {
- *         cmd: "cmd"
+ *         cmd: "find the top post on hackernews",
+ *         url: "https://news.ycombinator.com/"
  *     }
  */
 export interface BrowseInput {
