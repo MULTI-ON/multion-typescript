@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as MultiOn from "../../api";
 import * as core from "../../core";
+import { Metadata } from "./Metadata";
 
 export const BrowseOutput: core.serialization.ObjectSchema<serializers.BrowseOutput.Raw, MultiOn.BrowseOutput> =
     core.serialization.object({
@@ -13,6 +14,7 @@ export const BrowseOutput: core.serialization.ObjectSchema<serializers.BrowseOut
         url: core.serialization.string(),
         screenshot: core.serialization.string(),
         sessionId: core.serialization.property("session_id", core.serialization.string()),
+        metadata: Metadata.optional(),
     });
 
 export declare namespace BrowseOutput {
@@ -22,5 +24,6 @@ export declare namespace BrowseOutput {
         url: string;
         screenshot: string;
         session_id: string;
+        metadata?: Metadata.Raw | null;
     }
 }

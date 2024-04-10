@@ -1,3 +1,4 @@
+export * from "./Metadata";
 export * from "./BrowseOutput";
 export * from "./HttpValidationError";
 export * from "./SessionCreated";
