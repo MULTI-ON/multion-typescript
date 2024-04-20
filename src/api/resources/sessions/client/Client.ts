@@ -4,10 +4,11 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as MultiOn from "../../..";
-import * as serializers from "../../../../serialization";
+import * as MultiOn from "../../../index";
+import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors";
+import * as errors from "../../../../errors/index";
+import * as stream from "stream";
 
 export declare namespace Sessions {
     interface Options {
@@ -47,7 +48,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.0.1",
+                "X-Fern-SDK-Version": "1.1.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -104,16 +105,109 @@ export class Sessions {
 
     /**
      * Allows for browsing the web using detailed natural language instructions in a step mode for a session with a given session ID
+     */
+    public async stepStream(
+        sessionId: string,
+        request: MultiOn.SessionsStepStreamRequest,
+        requestOptions?: Sessions.RequestOptions
+    ): Promise<core.Stream<MultiOn.SessionStepStream>> {
+        const _response = await (this._options.fetcher ?? core.fetcher)<stream.Readable>({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.MultiOnEnvironment.Default,
+                `session/${sessionId}`
+            ),
+            method: "POST",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "multion",
+                "X-Fern-SDK-Version": "1.1.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            body: {
+                ...(await serializers.SessionsStepStreamRequest.jsonOrThrow(request, {
+                    unrecognizedObjectKeys: "strip",
+                })),
+                stream: true,
+            },
+            responseType: "streaming",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return new core.Stream({
+                stream: _response.body,
+                parse: async (data) => {
+                    return await serializers.SessionStepStream.parseOrThrow(data, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        skipValidation: true,
+                        breadcrumbsPrefix: ["response"],
+                    });
+                },
+                eventShape: {
+                    type: "sse",
+                },
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 422:
+                    throw new MultiOn.UnprocessableEntityError(
+                        await serializers.HttpValidationError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MultiOnError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MultiOnError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MultiOnTimeoutError();
+            case "unknown":
+                throw new errors.MultiOnError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Allows for browsing the web using detailed natural language instructions in a step mode for a session with a given session ID
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
      *     await multiOn.sessions.step("session_id", {
-     *         cmd: "cmd"
+     *         cmd: "cmd",
+     *         stream: false
+     *     })
+     *
+     * @example
+     *     await multiOn.sessions.step("string", {
+     *         cmd: "cmd",
+     *         stream: false
      *     })
      */
     public async step(
         sessionId: string,
-        request: MultiOn.StepSessionInput,
+        request: MultiOn.SessionsStepRequest,
         requestOptions?: Sessions.RequestOptions
     ): Promise<MultiOn.SessionStepSuccess> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -125,13 +219,16 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.0.1",
+                "X-Fern-SDK-Version": "1.1.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.StepSessionInput.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: {
+                ...(await serializers.SessionsStepRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" })),
+                stream: false,
+            },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -186,6 +283,9 @@ export class Sessions {
      *
      * @example
      *     await multiOn.sessions.close("session_id")
+     *
+     * @example
+     *     await multiOn.sessions.close("string")
      */
     public async close(
         sessionId: string,
@@ -200,7 +300,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.0.1",
+                "X-Fern-SDK-Version": "1.1.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -260,6 +360,9 @@ export class Sessions {
      *
      * @example
      *     await multiOn.sessions.screenshot("session_id")
+     *
+     * @example
+     *     await multiOn.sessions.screenshot("string")
      */
     public async screenshot(
         sessionId: string,
@@ -274,7 +377,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.0.1",
+                "X-Fern-SDK-Version": "1.1.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -344,7 +447,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.0.1",
+                "X-Fern-SDK-Version": "1.1.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

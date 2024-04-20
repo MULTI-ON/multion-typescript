@@ -1,6 +1,4 @@
-
 ## Browse
-
 
 <details><summary> <code>multiOn.<a href="./src/Client.ts">browse</a>({ ...params }) -> MultiOn.BrowseOutput</code> </summary>
 
@@ -41,7 +39,7 @@ Allows for browsing the web using detailed natural language instructions. The fu
 ```ts
 await multiOn.browse({
     cmd: "find the top post on hackernews",
-    url: "https://news.ycombinator.com/"
+    url: "https://news.ycombinator.com/",
 });
 ```
 
@@ -63,9 +61,7 @@ await multiOn.browse({
 
 <dd>
 
-
-**request: `MultiOn.BrowseInput`** 
-
+**request: `MultiOn.BrowseInput`**
 
 </dd>
 
@@ -75,9 +71,7 @@ await multiOn.browse({
 
 <dd>
 
-
-**requestOptions: `MultiOnClient.RequestOptions`** 
-
+**requestOptions: `MultiOnClient.RequestOptions`**
 
 </dd>
 
@@ -86,19 +80,13 @@ await multiOn.browse({
 </dd>
 
 </dl>
-
-
 
 </dd>
 
 </dl>
 </details>
 
-
-
-
 ## Sessions
-
 
 <details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">create</a>({ ...params }) -> MultiOn.SessionCreated</code> </summary>
 
@@ -138,7 +126,7 @@ Creates a new session and returns session details including a unique session ID.
 
 ```ts
 await multiOn.sessions.create({
-    url: "url"
+    url: "url",
 });
 ```
 
@@ -160,9 +148,7 @@ await multiOn.sessions.create({
 
 <dd>
 
-
-**request: `MultiOn.CreateSessionInput`** 
-
+**request: `MultiOn.CreateSessionInput`**
 
 </dd>
 
@@ -172,9 +158,7 @@ await multiOn.sessions.create({
 
 <dd>
 
-
-**requestOptions: `Sessions.RequestOptions`** 
-
+**requestOptions: `Sessions.RequestOptions`**
 
 </dd>
 
@@ -183,14 +167,82 @@ await multiOn.sessions.create({
 </dd>
 
 </dl>
-
-
 
 </dd>
 
 </dl>
 </details>
 
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">stepStream</a>(sessionId, { ...params }) -> core.Stream<MultiOn.SessionStepStream></code> </summary>
+
+<dl>
+
+<dd>
+
+#### 📝 Description
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+Allows for browsing the web using detailed natural language instructions in a step mode for a session with a given session ID
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+**sessionId: `string`**
+
+</dd>
+
+</dl>
+
+<dl>
+
+<dd>
+
+**request: `MultiOn.SessionsStepStreamRequest`**
+
+</dd>
+
+</dl>
+
+<dl>
+
+<dd>
+
+**requestOptions: `Sessions.RequestOptions`**
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+</details>
 
 <details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">step</a>(sessionId, { ...params }) -> MultiOn.SessionStepSuccess</code> </summary>
 
@@ -230,7 +282,8 @@ Allows for browsing the web using detailed natural language instructions in a st
 
 ```ts
 await multiOn.sessions.step("session_id", {
-    cmd: "cmd"
+    cmd: "cmd",
+    stream: false,
 });
 ```
 
@@ -252,9 +305,7 @@ await multiOn.sessions.step("session_id", {
 
 <dd>
 
-
-**sessionId: `string`** 
-
+**sessionId: `string`**
 
 </dd>
 
@@ -264,9 +315,7 @@ await multiOn.sessions.step("session_id", {
 
 <dd>
 
-
-**request: `MultiOn.StepSessionInput`** 
-
+**request: `MultiOn.SessionsStepRequest`**
 
 </dd>
 
@@ -276,9 +325,7 @@ await multiOn.sessions.step("session_id", {
 
 <dd>
 
-
-**requestOptions: `Sessions.RequestOptions`** 
-
+**requestOptions: `Sessions.RequestOptions`**
 
 </dd>
 
@@ -287,14 +334,11 @@ await multiOn.sessions.step("session_id", {
 </dd>
 
 </dl>
-
-
 
 </dd>
 
 </dl>
 </details>
-
 
 <details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">close</a>(sessionId) -> MultiOn.SessionsCloseResponse</code> </summary>
 
@@ -354,9 +398,7 @@ await multiOn.sessions.close("session_id");
 
 <dd>
 
-
-**sessionId: `string`** 
-
+**sessionId: `string`**
 
 </dd>
 
@@ -366,9 +408,7 @@ await multiOn.sessions.close("session_id");
 
 <dd>
 
-
-**requestOptions: `Sessions.RequestOptions`** 
-
+**requestOptions: `Sessions.RequestOptions`**
 
 </dd>
 
@@ -377,14 +417,11 @@ await multiOn.sessions.close("session_id");
 </dd>
 
 </dl>
-
-
 
 </dd>
 
 </dl>
 </details>
-
 
 <details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">screenshot</a>(sessionId) -> MultiOn.SessionsScreenshotResponse</code> </summary>
 
@@ -444,9 +481,7 @@ await multiOn.sessions.screenshot("session_id");
 
 <dd>
 
-
-**sessionId: `string`** 
-
+**sessionId: `string`**
 
 </dd>
 
@@ -456,9 +491,7 @@ await multiOn.sessions.screenshot("session_id");
 
 <dd>
 
-
-**requestOptions: `Sessions.RequestOptions`** 
-
+**requestOptions: `Sessions.RequestOptions`**
 
 </dd>
 
@@ -467,14 +500,11 @@ await multiOn.sessions.screenshot("session_id");
 </dd>
 
 </dl>
-
-
 
 </dd>
 
 </dl>
 </details>
-
 
 <details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">list</a>() -> MultiOn.SessionsListResponse</code> </summary>
 
@@ -534,9 +564,7 @@ await multiOn.sessions.list();
 
 <dd>
 
-
-**requestOptions: `Sessions.RequestOptions`** 
-
+**requestOptions: `Sessions.RequestOptions`**
 
 </dd>
 
@@ -545,12 +573,8 @@ await multiOn.sessions.list();
 </dd>
 
 </dl>
-
-
 
 </dd>
 
 </dl>
 </details>
-
-
