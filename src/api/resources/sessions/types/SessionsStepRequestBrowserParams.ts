@@ -5,7 +5,7 @@
 /**
  * Object containing height and width for the browser screen size.
  */
-export interface StepSessionInputBrowserParams {
+export interface SessionsStepRequestBrowserParams {
     height?: number;
     width?: number;
 }
