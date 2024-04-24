@@ -1,12 +1,11 @@
-import { MultiOn, MultiOnClient } from "../src";
-
 /**
- * This is a custom test file, if you wish to add more tests
- * to your SDK.
- * Be sure to mark this file in `.fernignore`.
- *
- * If you include example requests/responses in your fern definition,
- * you will have tests automatically generated for you.
- */
+* This is a test file for the SDK.
+* 
+* Add any tests here and make sure to mark this file
+* in `.fernignore`. 
+*/
 describe("test", () => {
+    it("default", () => {
+        expect(true).toBe(true);
+    });
 });
