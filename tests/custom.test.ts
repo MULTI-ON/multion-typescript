@@ -1,3 +1,5 @@
+import { MultiOn, MultiOnClient } from "../src";
+
 /**
  * This is a custom test file, if you wish to add more tests
  * to your SDK.
@@ -7,7 +9,4 @@
  * you will have tests automatically generated for you.
  */
 describe("test", () => {
-    it("default", () => {
-        expect(true).toBe(true);
-    });
 });
