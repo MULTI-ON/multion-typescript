@@ -4,10 +4,10 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import * as MultiOn from "./api";
-import * as serializers from "./serialization";
+import * as MultiOn from "./api/index";
+import * as serializers from "./serialization/index";
 import urlJoin from "url-join";
-import * as errors from "./errors";
+import * as errors from "./errors/index";
 import { Sessions } from "./api/resources/sessions/client/Client";
 
 export declare namespace MultiOnClient {
@@ -52,7 +52,7 @@ export class MultiOnClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.0.1",
+                "X-Fern-SDK-Version": "1.1.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

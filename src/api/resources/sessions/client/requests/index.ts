@@ -1,2 +1,3 @@
-export { CreateSessionInput } from "./CreateSessionInput";
-export { StepSessionInput } from "./StepSessionInput";
+export { type CreateSessionInput } from "./CreateSessionInput";
+export { type SessionsStepStreamRequest } from "./SessionsStepStreamRequest";
+export { type SessionsStepRequest } from "./SessionsStepRequest";

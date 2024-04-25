@@ -1,1 +1,1 @@
-export { BrowseInput } from "./BrowseInput";
+export { type BrowseInput } from "./BrowseInput";
