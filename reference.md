@@ -423,6 +423,91 @@ await multiOn.sessions.close("session_id");
 </dl>
 </details>
 
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">retrieve</a>({ ...params }) -> MultiOn.RetrieveOutput</code> </summary>
+
+<dl>
+
+<dd>
+
+#### 📝 Description
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+Retrieve data from webpage based on a url and command that guides agents data extraction process.
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+```ts
+await multiOn.sessions.retrieve({
+    cmd: "cmd",
+});
+```
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+**request: `MultiOn.RetrieveInput`**
+
+</dd>
+
+</dl>
+
+<dl>
+
+<dd>
+
+**requestOptions: `Sessions.RequestOptions`**
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+</details>
+
 <details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">screenshot</a>(sessionId) -> MultiOn.SessionsScreenshotResponse</code> </summary>
 
 <dl>

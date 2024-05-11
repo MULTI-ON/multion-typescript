@@ -6,6 +6,7 @@ import * as serializers from "../../../../index";
 import * as MultiOn from "../../../../../api/index";
 import * as core from "../../../../../core";
 import { SessionsStepStreamRequestBrowserParams } from "../../types/SessionsStepStreamRequestBrowserParams";
+import { OptionalParams } from "../../../../types/OptionalParams";
 
 export const SessionsStepStreamRequest: core.serialization.Schema<
     serializers.SessionsStepStreamRequest.Raw,
@@ -14,6 +15,7 @@ export const SessionsStepStreamRequest: core.serialization.Schema<
     cmd: core.serialization.string(),
     url: core.serialization.string().optional(),
     browserParams: core.serialization.property("browser_params", SessionsStepStreamRequestBrowserParams.optional()),
+    optionalParams: core.serialization.property("optional_params", OptionalParams.optional()),
     includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
 });
 
@@ -22,6 +24,7 @@ export declare namespace SessionsStepStreamRequest {
         cmd: string;
         url?: string | null;
         browser_params?: SessionsStepStreamRequestBrowserParams.Raw | null;
+        optional_params?: OptionalParams.Raw | null;
         include_screenshot?: boolean | null;
     }
 }

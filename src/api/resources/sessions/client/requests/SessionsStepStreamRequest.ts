@@ -14,6 +14,9 @@ import * as MultiOn from "../../../../index";
  *             height: 1.1,
  *             width: 1.1
  *         },
+ *         optionalParams: {
+ *             temperture: 1.1
+ *         },
  *         includeScreenshot: true
  *     }
  *
@@ -26,6 +29,9 @@ import * as MultiOn from "../../../../index";
  *             height: 1.1,
  *             width: 1.1
  *         },
+ *         optionalParams: {
+ *             temperture: 1.1
+ *         },
  *         includeScreenshot: true
  *     }
  */
@@ -36,5 +42,6 @@ export interface SessionsStepStreamRequest {
     url?: string;
     /** Object containing height and width for the browser screen size. */
     browserParams?: MultiOn.SessionsStepStreamRequestBrowserParams;
+    optionalParams?: MultiOn.OptionalParams;
     includeScreenshot?: boolean;
 }

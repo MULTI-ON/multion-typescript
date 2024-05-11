@@ -10,11 +10,13 @@ export const Metadata: core.serialization.ObjectSchema<serializers.Metadata.Raw,
     core.serialization.object({
         stepCount: core.serialization.property("step_count", core.serialization.number().optional()),
         processingTime: core.serialization.property("processing_time", core.serialization.number().optional()),
+        temperture: core.serialization.number().optional(),
     });
 
 export declare namespace Metadata {
     interface Raw {
         step_count?: number | null;
         processing_time?: number | null;
+        temperture?: number | null;
     }
 }

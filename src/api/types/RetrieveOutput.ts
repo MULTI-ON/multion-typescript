@@ -3,12 +3,18 @@
  */
 
 export interface RetrieveOutput {
-    /** information on a webpage based on a user query */
+    /** information relating to response */
     message: string;
     /** The last accessed URL during the session. */
     url: string;
     /** image url of the screenshot taken during the session. */
     screenshot?: string;
-    /** Dictionary of link available on the web page */
-    linkDict: Record<string, string>;
+    /** The unique identifier for the session. */
+    sessionId?: string;
+    /** The current status of the session. CONTINUE if more pages are available. DONE if scrolled to the end of the page. */
+    status: string;
+    /** next page number. where each viewport is another page */
+    nextPage?: number;
+    /** Array of data objects, each containing data requested in fields. */
+    data: Record<string, unknown>[];
 }

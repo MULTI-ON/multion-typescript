@@ -10,4 +10,6 @@ export interface Metadata {
     stepCount?: number;
     /** Time taken to process the request in seconds. */
     processingTime?: number;
+    /** The temperature of model */
+    temperture?: number;
 }

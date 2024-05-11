@@ -11,9 +11,11 @@ export const RetrieveOutput: core.serialization.ObjectSchema<serializers.Retriev
         message: core.serialization.string(),
         url: core.serialization.string(),
         screenshot: core.serialization.string().optional(),
-        linkDict: core.serialization.property(
-            "link_dict",
-            core.serialization.record(core.serialization.string(), core.serialization.string())
+        sessionId: core.serialization.property("session_id", core.serialization.string().optional()),
+        status: core.serialization.string(),
+        nextPage: core.serialization.property("next_page", core.serialization.number().optional()),
+        data: core.serialization.list(
+            core.serialization.record(core.serialization.string(), core.serialization.unknown())
         ),
     });
 
@@ -22,6 +24,9 @@ export declare namespace RetrieveOutput {
         message: string;
         url: string;
         screenshot?: string | null;
-        link_dict: Record<string, string>;
+        session_id?: string | null;
+        status: string;
+        next_page?: number | null;
+        data: Record<string, unknown>[];
     }
 }

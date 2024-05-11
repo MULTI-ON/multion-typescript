@@ -5,6 +5,7 @@
 import * as serializers from "../../index";
 import * as MultiOn from "../../../api/index";
 import * as core from "../../../core";
+import { OptionalParams } from "../../types/OptionalParams";
 
 export const BrowseInput: core.serialization.Schema<serializers.BrowseInput.Raw, MultiOn.BrowseInput> =
     core.serialization.object({
@@ -14,6 +15,7 @@ export const BrowseInput: core.serialization.Schema<serializers.BrowseInput.Raw,
         sessionId: core.serialization.property("session_id", core.serialization.string().optional()),
         maxSteps: core.serialization.property("max_steps", core.serialization.number().optional()),
         includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
+        optionalParams: core.serialization.property("optional_params", OptionalParams.optional()),
     });
 
 export declare namespace BrowseInput {
@@ -24,5 +26,6 @@ export declare namespace BrowseInput {
         session_id?: string | null;
         max_steps?: number | null;
         include_screenshot?: boolean | null;
+        optional_params?: OptionalParams.Raw | null;
     }
 }
