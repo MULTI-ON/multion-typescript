@@ -27,7 +27,7 @@ export class Sessions {
     constructor(protected readonly _options: Sessions.Options) {}
 
     /**
-     * Creates a new session and returns session details including a unique session ID.
+     * Creates a new session and returns session details including a unique session ID. A session remains active for 10 minutes of inactivity.
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
@@ -48,7 +48,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.2.0",
+                "X-Fern-SDK-Version": "1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -120,7 +120,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.2.0",
+                "X-Fern-SDK-Version": "1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -220,7 +220,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.2.0",
+                "X-Fern-SDK-Version": "1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -301,7 +301,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.2.0",
+                "X-Fern-SDK-Version": "1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -377,7 +377,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.2.0",
+                "X-Fern-SDK-Version": "1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -455,7 +455,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.2.0",
+                "X-Fern-SDK-Version": "1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -525,7 +525,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.2.0",
+                "X-Fern-SDK-Version": "1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -27,9 +27,12 @@ export class MultiOnClient {
     constructor(protected readonly _options: MultiOnClient.Options) {}
 
     /**
-     * Allows for browsing the web using detailed natural language instructions. The function supports multi-step command execution based on the `CONTINUE` status.
+     * Allows for browsing the web using detailed natural language commands.
+     *
+     * The function supports multi-step command execution based on the `CONTINUE` status of the Agent.
      * @throws {@link MultiOn.BadRequestError}
      * @throws {@link MultiOn.UnauthorizedError}
+     * @throws {@link MultiOn.PaymentRequiredError}
      * @throws {@link MultiOn.UnprocessableEntityError}
      * @throws {@link MultiOn.InternalServerError}
      *
@@ -52,7 +55,7 @@ export class MultiOnClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.2.0",
+                "X-Fern-SDK-Version": "1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -87,6 +90,16 @@ export class MultiOnClient {
                 case 401:
                     throw new MultiOn.UnauthorizedError(
                         await serializers.UnauthorizedResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case 402:
+                    throw new MultiOn.PaymentRequiredError(
+                        await serializers.PaymentRequiredResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

@@ -7,5 +7,5 @@
  */
 export interface SessionStepSuccessMetadata {
     /** The temperature of model */
-    temperture?: number;
+    temperature?: number;
 }

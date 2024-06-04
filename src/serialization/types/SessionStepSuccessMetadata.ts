@@ -10,11 +10,11 @@ export const SessionStepSuccessMetadata: core.serialization.ObjectSchema<
     serializers.SessionStepSuccessMetadata.Raw,
     MultiOn.SessionStepSuccessMetadata
 > = core.serialization.object({
-    temperture: core.serialization.number().optional(),
+    temperature: core.serialization.number().optional(),
 });
 
 export declare namespace SessionStepSuccessMetadata {
     interface Raw {
-        temperture?: number | null;
+        temperature?: number | null;
     }
 }

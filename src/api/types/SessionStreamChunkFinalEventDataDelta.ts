@@ -10,6 +10,6 @@ export interface SessionStreamChunkFinalEventDataDelta {
     content: string;
     /** The URL associated with the session. */
     url: string;
-    /** The current status of the session. */
+    /** The final status of the browsing session. One of ["CONTINUE", "ASK_USER", "DONE"] */
     status: string;
 }

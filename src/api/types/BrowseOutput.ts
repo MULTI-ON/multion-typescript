@@ -7,7 +7,7 @@ import * as MultiOn from "../index";
 export interface BrowseOutput {
     /** The final message or result of the browsing session. */
     message: string;
-    /** The final status of the browsing session. */
+    /** The final status of the browsing session. One of ["CONTINUE", "ASK_USER", "DONE"] */
     status: string;
     /** The current URL of the session. */
     url: string;

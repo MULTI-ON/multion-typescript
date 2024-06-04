@@ -30,6 +30,8 @@ export interface SessionsStepRequest {
     url?: string;
     /** Object containing height and width for the browser screen size. */
     browserParams?: MultiOn.SessionsStepRequestBrowserParams;
-    optionalParams?: MultiOn.OptionalParams;
+    /** The temperature of model */
+    temperature?: number;
+    mode?: MultiOn.Mode;
     includeScreenshot?: boolean;
 }

@@ -5,7 +5,7 @@
 import * as MultiOn from "../index";
 
 export interface SessionStepSuccess {
-    /** The current status of the session. */
+    /** The final status of the browsing session. One of ["CONTINUE", "ASK_USER", "DONE"] */
     status: string;
     /** A message providing more details about the session status. */
     message: string;

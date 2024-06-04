@@ -9,10 +9,13 @@ import * as core from "../../../../../core";
 export const RetrieveInput: core.serialization.Schema<serializers.RetrieveInput.Raw, MultiOn.RetrieveInput> =
     core.serialization.object({
         cmd: core.serialization.string(),
-        sessionId: core.serialization.property("session_id", core.serialization.string().optional()),
-        pageNumber: core.serialization.property("page_number", core.serialization.number().optional()),
         url: core.serialization.string().optional(),
-        fields: core.serialization.string().optional(),
+        sessionId: core.serialization.property("session_id", core.serialization.string().optional()),
+        local: core.serialization.boolean().optional(),
+        startPage: core.serialization.property("start_page", core.serialization.number().optional()),
+        endPage: core.serialization.property("end_page", core.serialization.number().optional()),
+        renderJs: core.serialization.property("render_js", core.serialization.boolean().optional()),
+        fields: core.serialization.list(core.serialization.string()).optional(),
         format: core.serialization.stringLiteral("json").optional(),
         includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
     });
@@ -20,10 +23,13 @@ export const RetrieveInput: core.serialization.Schema<serializers.RetrieveInput.
 export declare namespace RetrieveInput {
     interface Raw {
         cmd: string;
-        session_id?: string | null;
-        page_number?: number | null;
         url?: string | null;
-        fields?: string | null;
+        session_id?: string | null;
+        local?: boolean | null;
+        start_page?: number | null;
+        end_page?: number | null;
+        render_js?: boolean | null;
+        fields?: string[] | null;
         format?: "json" | null;
         include_screenshot?: boolean | null;
     }

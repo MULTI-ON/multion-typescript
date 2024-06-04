@@ -14,9 +14,8 @@ import * as MultiOn from "../../../../index";
  *             height: 1.1,
  *             width: 1.1
  *         },
- *         optionalParams: {
- *             temperture: 1.1
- *         },
+ *         temperature: 1.1,
+ *         mode: MultiOn.Mode.Fast,
  *         includeScreenshot: true
  *     }
  *
@@ -29,9 +28,8 @@ import * as MultiOn from "../../../../index";
  *             height: 1.1,
  *             width: 1.1
  *         },
- *         optionalParams: {
- *             temperture: 1.1
- *         },
+ *         temperature: 1.1,
+ *         mode: MultiOn.Mode.Fast,
  *         includeScreenshot: true
  *     }
  */
@@ -42,6 +40,8 @@ export interface SessionsStepStreamRequest {
     url?: string;
     /** Object containing height and width for the browser screen size. */
     browserParams?: MultiOn.SessionsStepStreamRequestBrowserParams;
-    optionalParams?: MultiOn.OptionalParams;
+    /** The temperature of model */
+    temperature?: number;
+    mode?: MultiOn.Mode;
     includeScreenshot?: boolean;
 }

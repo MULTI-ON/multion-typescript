@@ -16,7 +16,9 @@
 
 <dd>
 
-Allows for browsing the web using detailed natural language instructions. The function supports multi-step command execution based on the `CONTINUE` status.
+Allows for browsing the web using detailed natural language commands.
+
+The function supports multi-step command execution based on the `CONTINUE` status of the Agent.
 
 </dd>
 
@@ -104,7 +106,7 @@ await multiOn.browse({
 
 <dd>
 
-Creates a new session and returns session details including a unique session ID.
+Creates a new session and returns session details including a unique session ID. A session remains active for 10 minutes of inactivity.
 
 </dd>
 

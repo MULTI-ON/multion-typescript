@@ -5,6 +5,7 @@
 import * as serializers from "../../../../index";
 import * as MultiOn from "../../../../../api/index";
 import * as core from "../../../../../core";
+import { Mode } from "../../../../types/Mode";
 import { CreateSessionInputBrowserParams } from "../../types/CreateSessionInputBrowserParams";
 
 export const CreateSessionInput: core.serialization.Schema<
@@ -13,6 +14,8 @@ export const CreateSessionInput: core.serialization.Schema<
 > = core.serialization.object({
     url: core.serialization.string(),
     local: core.serialization.boolean().optional(),
+    mode: Mode.optional(),
+    useProxy: core.serialization.property("use_proxy", core.serialization.boolean().optional()),
     browserParams: core.serialization.property("browser_params", CreateSessionInputBrowserParams.optional()),
     includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
 });
@@ -21,6 +24,8 @@ export declare namespace CreateSessionInput {
     interface Raw {
         url: string;
         local?: boolean | null;
+        mode?: Mode.Raw | null;
+        use_proxy?: boolean | null;
         browser_params?: CreateSessionInputBrowserParams.Raw | null;
         include_screenshot?: boolean | null;
     }
