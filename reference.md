@@ -40,7 +40,7 @@ The function supports multi-step command execution based on the `CONTINUE` statu
 
 ```ts
 await multiOn.browse({
-    cmd: "find the top post on hackernews",
+    cmd: "Find the top post on Hackernews.",
     url: "https://news.ycombinator.com/",
 });
 ```
@@ -64,6 +64,97 @@ await multiOn.browse({
 <dd>
 
 **request: `MultiOn.BrowseInput`**
+
+</dd>
+
+</dl>
+
+<dl>
+
+<dd>
+
+**requestOptions: `MultiOnClient.RequestOptions`**
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+</details>
+
+## Retrieve
+
+<details><summary> <code>multiOn.<a href="./src/Client.ts">retrieve</a>({ ...params }) -> MultiOn.RetrieveOutput</code> </summary>
+
+<dl>
+
+<dd>
+
+#### 📝 Description
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+Retrieve data from webpage based on a url and natural language command that guides agents data extraction process.
+
+The function can create a new session or be used as part of a session.
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+```ts
+await multiOn.retrieve({
+    cmd: "Find the top post on Hackernews and get its title and points.",
+    url: "https://news.ycombinator.com/",
+    fields: ["title", "points"],
+});
+```
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+**request: `MultiOn.RetrieveInput`**
 
 </dd>
 
@@ -401,91 +492,6 @@ await multiOn.sessions.close("session_id");
 <dd>
 
 **sessionId: `string`**
-
-</dd>
-
-</dl>
-
-<dl>
-
-<dd>
-
-**requestOptions: `Sessions.RequestOptions`**
-
-</dd>
-
-</dl>
-
-</dd>
-
-</dl>
-
-</dd>
-
-</dl>
-</details>
-
-<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">retrieve</a>({ ...params }) -> MultiOn.RetrieveOutput</code> </summary>
-
-<dl>
-
-<dd>
-
-#### 📝 Description
-
-<dl>
-
-<dd>
-
-<dl>
-
-<dd>
-
-Retrieve data from webpage based on a url and command that guides agents data extraction process.
-
-</dd>
-
-</dl>
-
-</dd>
-
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-
-<dd>
-
-<dl>
-
-<dd>
-
-```ts
-await multiOn.sessions.retrieve({
-    cmd: "cmd",
-});
-```
-
-</dd>
-
-</dl>
-
-</dd>
-
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-
-<dd>
-
-<dl>
-
-<dd>
-
-**request: `MultiOn.RetrieveInput`**
 
 </dd>
 

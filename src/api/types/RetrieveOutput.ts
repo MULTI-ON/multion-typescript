@@ -11,10 +11,8 @@ export interface RetrieveOutput {
     screenshot?: string;
     /** The unique identifier for the session. */
     sessionId?: string;
-    /** The current status of the session. CONTINUE if more pages are available. DONE if scrolled to the end of the page. */
+    /** The current status of the session. */
     status: string;
-    /** next page number. where each viewport is another page */
-    nextPage?: number;
     /** Array of data objects, each containing data requested in fields. */
     data: Record<string, unknown>[];
 }
