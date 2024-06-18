@@ -20,6 +20,7 @@ export declare namespace Sessions {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -28,10 +29,14 @@ export class Sessions {
 
     /**
      * Creates a new session and returns session details including a unique session ID. A session remains active for 10 minutes of inactivity.
+     *
+     * @param {MultiOn.CreateSessionInput} request
+     * @param {Sessions.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
-     *     await multiOn.sessions.create({
+     *     await client.sessions.create({
      *         url: "url"
      *     })
      */
@@ -48,7 +53,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.1",
+                "X-Fern-SDK-Version": "1.3.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -57,6 +62,7 @@ export class Sessions {
             body: await serializers.CreateSessionInput.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 180000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.SessionCreated.parseOrThrow(_response.body, {
@@ -114,13 +120,13 @@ export class Sessions {
         const _response = await (this._options.fetcher ?? core.fetcher)<stream.Readable>({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MultiOnEnvironment.Default,
-                `session/${sessionId}`
+                `session/${encodeURIComponent(sessionId)}`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.1",
+                "X-Fern-SDK-Version": "1.3.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -135,6 +141,7 @@ export class Sessions {
             responseType: "streaming",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 180000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return new core.Stream({
@@ -148,6 +155,7 @@ export class Sessions {
                         breadcrumbsPrefix: ["response"],
                     });
                 },
+                signal: requestOptions?.abortSignal,
                 eventShape: {
                     type: "sse",
                     streamTerminator: "[DONE]",
@@ -192,16 +200,15 @@ export class Sessions {
 
     /**
      * Allows for browsing the web using detailed natural language instructions in a step mode for a session with a given session ID
+     *
+     * @param {string} sessionId
+     * @param {MultiOn.SessionsStepRequest} request
+     * @param {Sessions.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
-     *     await multiOn.sessions.step("session_id", {
-     *         cmd: "cmd",
-     *         stream: false
-     *     })
-     *
-     * @example
-     *     await multiOn.sessions.step("string", {
+     *     await client.sessions.step("session_id", {
      *         cmd: "cmd",
      *         stream: false
      *     })
@@ -214,13 +221,13 @@ export class Sessions {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MultiOnEnvironment.Default,
-                `session/${sessionId}`
+                `session/${encodeURIComponent(sessionId)}`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.1",
+                "X-Fern-SDK-Version": "1.3.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -232,6 +239,7 @@ export class Sessions {
             },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 180000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.SessionStepSuccess.parseOrThrow(_response.body, {
@@ -280,13 +288,14 @@ export class Sessions {
 
     /**
      * Closes the session.
+     *
+     * @param {string} sessionId
+     * @param {Sessions.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
-     *     await multiOn.sessions.close("session_id")
-     *
-     * @example
-     *     await multiOn.sessions.close("string")
+     *     await client.sessions.close("session_id")
      */
     public async close(
         sessionId: string,
@@ -295,13 +304,13 @@ export class Sessions {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MultiOnEnvironment.Default,
-                `session/${sessionId}`
+                `session/${encodeURIComponent(sessionId)}`
             ),
             method: "DELETE",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.1",
+                "X-Fern-SDK-Version": "1.3.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -309,6 +318,7 @@ export class Sessions {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 180000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.SessionsCloseResponse.parseOrThrow(_response.body, {
@@ -357,13 +367,14 @@ export class Sessions {
 
     /**
      * Retrieve the screenshot of the session.
+     *
+     * @param {string} sessionId
+     * @param {Sessions.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
-     *     await multiOn.sessions.screenshot("session_id")
-     *
-     * @example
-     *     await multiOn.sessions.screenshot("string")
+     *     await client.sessions.screenshot("session_id")
      */
     public async screenshot(
         sessionId: string,
@@ -372,13 +383,13 @@ export class Sessions {
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MultiOnEnvironment.Default,
-                `screenshot/${sessionId}`
+                `screenshot/${encodeURIComponent(sessionId)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.1",
+                "X-Fern-SDK-Version": "1.3.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -386,6 +397,7 @@ export class Sessions {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 180000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.SessionsScreenshotResponse.parseOrThrow(_response.body, {
@@ -435,8 +447,10 @@ export class Sessions {
     /**
      * Retrieve a list of active session IDs.
      *
+     * @param {Sessions.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
-     *     await multiOn.sessions.list()
+     *     await client.sessions.list()
      */
     public async list(requestOptions?: Sessions.RequestOptions): Promise<MultiOn.SessionsListResponse> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -448,7 +462,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.1",
+                "X-Fern-SDK-Version": "1.3.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -456,6 +470,7 @@ export class Sessions {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 180000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.SessionsListResponse.parseOrThrow(_response.body, {

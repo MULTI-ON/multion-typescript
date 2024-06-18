@@ -20,6 +20,7 @@ export declare namespace MultiOnClient {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -30,6 +31,10 @@ export class MultiOnClient {
      * Allows for browsing the web using detailed natural language commands.
      *
      * The function supports multi-step command execution based on the `CONTINUE` status of the Agent.
+     *
+     * @param {MultiOn.BrowseInput} request
+     * @param {MultiOnClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link MultiOn.BadRequestError}
      * @throws {@link MultiOn.UnauthorizedError}
      * @throws {@link MultiOn.PaymentRequiredError}
@@ -37,8 +42,8 @@ export class MultiOnClient {
      * @throws {@link MultiOn.InternalServerError}
      *
      * @example
-     *     await multiOn.browse({
-     *         cmd: "Find the top post on Hackernews.",
+     *     await client.browse({
+     *         cmd: "Find the top comment of the top post on Hackernews.",
      *         url: "https://news.ycombinator.com/"
      *     })
      */
@@ -55,7 +60,7 @@ export class MultiOnClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.1",
+                "X-Fern-SDK-Version": "1.3.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -64,6 +69,7 @@ export class MultiOnClient {
             body: await serializers.BrowseInput.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 180000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.BrowseOutput.parseOrThrow(_response.body, {
@@ -154,11 +160,15 @@ export class MultiOnClient {
      * Retrieve data from webpage based on a url and natural language command that guides agents data extraction process.
      *
      * The function can create a new session or be used as part of a session.
+     *
+     * @param {MultiOn.RetrieveInput} request
+     * @param {MultiOnClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link MultiOn.UnprocessableEntityError}
      *
      * @example
-     *     await multiOn.retrieve({
-     *         cmd: "Find the top post on Hackernews and get its title and points.",
+     *     await client.retrieve({
+     *         cmd: "Find the top comment of the top post on Hackernews and get its title and points.",
      *         url: "https://news.ycombinator.com/",
      *         fields: ["title", "points"]
      *     })
@@ -176,7 +186,7 @@ export class MultiOnClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.1",
+                "X-Fern-SDK-Version": "1.3.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -185,6 +195,7 @@ export class MultiOnClient {
             body: await serializers.RetrieveInput.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 180000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.RetrieveOutput.parseOrThrow(_response.body, {
