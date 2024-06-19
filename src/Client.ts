@@ -43,7 +43,7 @@ export class MultiOnClient {
      *
      * @example
      *     await client.browse({
-     *         cmd: "Find the top comment of the top post on Hackernews.",
+     *         cmd: "Find the top post on Hackernews.",
      *         url: "https://news.ycombinator.com/"
      *     })
      */
@@ -60,7 +60,7 @@ export class MultiOnClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.2",
+                "X-Fern-SDK-Version": "1.3.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -168,7 +168,7 @@ export class MultiOnClient {
      *
      * @example
      *     await client.retrieve({
-     *         cmd: "Find the top comment of the top post on Hackernews and get its title and points.",
+     *         cmd: "Find the top post on Hackernews and get its title and points.",
      *         url: "https://news.ycombinator.com/",
      *         fields: ["title", "points"]
      *     })
@@ -186,7 +186,7 @@ export class MultiOnClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.2",
+                "X-Fern-SDK-Version": "1.3.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

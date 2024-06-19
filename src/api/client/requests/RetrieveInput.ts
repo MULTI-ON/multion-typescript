@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         cmd: "Find the top comment of the top post on Hackernews and get its title and points.",
+ *         cmd: "Find the top post on Hackernews and get its title and points.",
  *         url: "https://news.ycombinator.com/",
  *         fields: ["title", "points"]
  *     }

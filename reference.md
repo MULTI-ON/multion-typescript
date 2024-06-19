@@ -40,7 +40,7 @@ The function supports multi-step command execution based on the `CONTINUE` statu
 
 ```ts
 await client.browse({
-    cmd: "Find the top comment of the top post on Hackernews.",
+    cmd: "Find the top post on Hackernews.",
     url: "https://news.ycombinator.com/",
 });
 ```
@@ -130,7 +130,7 @@ The function can create a new session or be used as part of a session.
 
 ```ts
 await client.retrieve({
-    cmd: "Find the top comment of the top post on Hackernews and get its title and points.",
+    cmd: "Find the top post on Hackernews and get its title and points.",
     url: "https://news.ycombinator.com/",
     fields: ["title", "points"],
 });
