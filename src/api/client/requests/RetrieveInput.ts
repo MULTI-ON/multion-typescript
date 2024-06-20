@@ -9,20 +9,6 @@
  *         url: "https://news.ycombinator.com/",
  *         fields: ["title", "points"]
  *     }
- *
- * @example
- *     {
- *         cmd: "Find the top post on Hackernews and get its title and points.",
- *         url: "https://news.ycombinator.com/",
- *         fields: ["title", "points"]
- *     }
- *
- * @example
- *     {
- *         cmd: "Find the top post on Hackernews and get its title and points.",
- *         url: "https://news.ycombinator.com/",
- *         fields: ["title", "points"]
- *     }
  */
 export interface RetrieveInput {
     /** A specific natural language instruction on data the agent should extract. */

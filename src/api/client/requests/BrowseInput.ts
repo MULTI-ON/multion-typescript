@@ -10,42 +10,6 @@ import * as MultiOn from "../../index";
  *         cmd: "Find the top post on Hackernews.",
  *         url: "https://news.ycombinator.com/"
  *     }
- *
- * @example
- *     {
- *         cmd: "Find the top post on Hackernews.",
- *         url: "https://news.ycombinator.com/"
- *     }
- *
- * @example
- *     {
- *         cmd: "Find the top post on Hackernews.",
- *         url: "https://news.ycombinator.com/"
- *     }
- *
- * @example
- *     {
- *         cmd: "Find the top post on Hackernews.",
- *         url: "https://news.ycombinator.com/"
- *     }
- *
- * @example
- *     {
- *         cmd: "Find the top post on Hackernews.",
- *         url: "https://news.ycombinator.com/"
- *     }
- *
- * @example
- *     {
- *         cmd: "Find the top post on Hackernews.",
- *         url: "https://news.ycombinator.com/"
- *     }
- *
- * @example
- *     {
- *         cmd: "Find the top post on Hackernews.",
- *         url: "https://news.ycombinator.com/"
- *     }
  */
 export interface BrowseInput {
     /** A specific natural language instruction for the agent to execute */
