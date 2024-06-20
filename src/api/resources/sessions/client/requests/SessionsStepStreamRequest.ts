@@ -9,7 +9,6 @@ import * as MultiOn from "../../../../index";
  *     {
  *         cmd: "string",
  *         url: "string",
- *         stream: true,
  *         browserParams: {
  *             height: 1.1,
  *             width: 1.1

@@ -292,6 +292,38 @@ Allows for browsing the web using detailed natural language instructions in a st
 
 </dl>
 
+#### 🔌 Usage
+
+<dl>
+
+<dd>
+
+<dl>
+
+<dd>
+
+```ts
+await client.sessions.stepStream("string", {
+    cmd: "string",
+    url: "string",
+    browserParams: {
+        height: 1.1,
+        width: 1.1,
+    },
+    temperature: 1.1,
+    mode: MultiOn.Mode.Fast,
+    includeScreenshot: true,
+});
+```
+
+</dd>
+
+</dl>
+
+</dd>
+
+</dl>
+
 #### ⚙️ Parameters
 
 <dl>
