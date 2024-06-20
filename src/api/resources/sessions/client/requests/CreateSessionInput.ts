@@ -9,6 +9,16 @@ import * as MultiOn from "../../../../index";
  *     {
  *         url: "url"
  *     }
+ *
+ * @example
+ *     {
+ *         url: "url"
+ *     }
+ *
+ * @example
+ *     {
+ *         url: "url"
+ *     }
  */
 export interface CreateSessionInput {
     /** The URL to create or continue session from. */

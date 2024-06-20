@@ -18,6 +18,20 @@ import * as MultiOn from "../../../../index";
  *         mode: MultiOn.Mode.Fast,
  *         includeScreenshot: true
  *     }
+ *
+ * @example
+ *     {
+ *         cmd: "string",
+ *         url: "string",
+ *         stream: true,
+ *         browserParams: {
+ *             height: 1.1,
+ *             width: 1.1
+ *         },
+ *         temperature: 1.1,
+ *         mode: MultiOn.Mode.Fast,
+ *         includeScreenshot: true
+ *     }
  */
 export interface SessionsStepStreamRequest {
     /** A specific natural language instruction for the next step. */

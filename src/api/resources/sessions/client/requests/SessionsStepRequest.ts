@@ -10,6 +10,18 @@ import * as MultiOn from "../../../../index";
  *         cmd: "cmd",
  *         stream: false
  *     }
+ *
+ * @example
+ *     {
+ *         cmd: "cmd",
+ *         stream: false
+ *     }
+ *
+ * @example
+ *     {
+ *         cmd: "cmd",
+ *         stream: false
+ *     }
  */
 export interface SessionsStepRequest {
     /** A specific natural language instruction for the next step. */

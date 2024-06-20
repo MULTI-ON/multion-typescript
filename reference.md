@@ -1,6 +1,6 @@
 ## Browse
 
-<details><summary> <code>client.<a href="./src/Client.ts">browse</a>({ ...params }) -> MultiOn.BrowseOutput</code> </summary>
+<details><summary> <code>multiOn.<a href="./src/Client.ts">browse</a>({ ...params }) -> MultiOn.BrowseOutput</code> </summary>
 
 <dl>
 
@@ -39,8 +39,8 @@ The function supports multi-step command execution based on the `CONTINUE` statu
 <dd>
 
 ```ts
-await client.browse({
-    cmd: "Find the top comment of the top post on Hackernews.",
+await multiOn.browse({
+    cmd: "Find the top post on Hackernews.",
     url: "https://news.ycombinator.com/",
 });
 ```
@@ -90,7 +90,7 @@ await client.browse({
 
 ## Retrieve
 
-<details><summary> <code>client.<a href="./src/Client.ts">retrieve</a>({ ...params }) -> MultiOn.RetrieveOutput</code> </summary>
+<details><summary> <code>multiOn.<a href="./src/Client.ts">retrieve</a>({ ...params }) -> MultiOn.RetrieveOutput</code> </summary>
 
 <dl>
 
@@ -129,8 +129,8 @@ The function can create a new session or be used as part of a session.
 <dd>
 
 ```ts
-await client.retrieve({
-    cmd: "Find the top comment of the top post on Hackernews and get its title and points.",
+await multiOn.retrieve({
+    cmd: "Find the top post on Hackernews and get its title and points.",
     url: "https://news.ycombinator.com/",
     fields: ["title", "points"],
 });
@@ -181,7 +181,7 @@ await client.retrieve({
 
 ## Sessions
 
-<details><summary> <code>client.sessions.<a href="./src/api/resources/sessions/client/Client.ts">create</a>({ ...params }) -> MultiOn.SessionCreated</code> </summary>
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">create</a>({ ...params }) -> MultiOn.SessionCreated</code> </summary>
 
 <dl>
 
@@ -218,7 +218,7 @@ Creates a new session and returns session details including a unique session ID.
 <dd>
 
 ```ts
-await client.sessions.create({
+await multiOn.sessions.create({
     url: "url",
 });
 ```
@@ -266,7 +266,7 @@ await client.sessions.create({
 </dl>
 </details>
 
-<details><summary> <code>client.sessions.<a href="./src/api/resources/sessions/client/Client.ts">stepStream</a>(sessionId, { ...params }) -> core.Stream<MultiOn.SessionStepStreamChunk></code> </summary>
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">stepStream</a>(sessionId, { ...params }) -> core.Stream<MultiOn.SessionStepStreamChunk></code> </summary>
 
 <dl>
 
@@ -337,7 +337,7 @@ Allows for browsing the web using detailed natural language instructions in a st
 </dl>
 </details>
 
-<details><summary> <code>client.sessions.<a href="./src/api/resources/sessions/client/Client.ts">step</a>(sessionId, { ...params }) -> MultiOn.SessionStepSuccess</code> </summary>
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">step</a>(sessionId, { ...params }) -> MultiOn.SessionStepSuccess</code> </summary>
 
 <dl>
 
@@ -374,7 +374,7 @@ Allows for browsing the web using detailed natural language instructions in a st
 <dd>
 
 ```ts
-await client.sessions.step("session_id", {
+await multiOn.sessions.step("session_id", {
     cmd: "cmd",
     stream: false,
 });
@@ -433,7 +433,7 @@ await client.sessions.step("session_id", {
 </dl>
 </details>
 
-<details><summary> <code>client.sessions.<a href="./src/api/resources/sessions/client/Client.ts">close</a>(sessionId) -> MultiOn.SessionsCloseResponse</code> </summary>
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">close</a>(sessionId) -> MultiOn.SessionsCloseResponse</code> </summary>
 
 <dl>
 
@@ -470,7 +470,7 @@ Closes the session.
 <dd>
 
 ```ts
-await client.sessions.close("session_id");
+await multiOn.sessions.close("session_id");
 ```
 
 </dd>
@@ -516,7 +516,7 @@ await client.sessions.close("session_id");
 </dl>
 </details>
 
-<details><summary> <code>client.sessions.<a href="./src/api/resources/sessions/client/Client.ts">screenshot</a>(sessionId) -> MultiOn.SessionsScreenshotResponse</code> </summary>
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">screenshot</a>(sessionId) -> MultiOn.SessionsScreenshotResponse</code> </summary>
 
 <dl>
 
@@ -553,7 +553,7 @@ Retrieve the screenshot of the session.
 <dd>
 
 ```ts
-await client.sessions.screenshot("session_id");
+await multiOn.sessions.screenshot("session_id");
 ```
 
 </dd>
@@ -599,7 +599,7 @@ await client.sessions.screenshot("session_id");
 </dl>
 </details>
 
-<details><summary> <code>client.sessions.<a href="./src/api/resources/sessions/client/Client.ts">list</a>() -> MultiOn.SessionsListResponse</code> </summary>
+<details><summary> <code>multiOn.sessions.<a href="./src/api/resources/sessions/client/Client.ts">list</a>() -> MultiOn.SessionsListResponse</code> </summary>
 
 <dl>
 
@@ -636,7 +636,7 @@ Retrieve a list of active session IDs.
 <dd>
 
 ```ts
-await client.sessions.list();
+await multiOn.sessions.list();
 ```
 
 </dd>

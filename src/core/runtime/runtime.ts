@@ -56,18 +56,12 @@ const isNode =
 const isReactNative = typeof navigator !== "undefined" && navigator?.product === "ReactNative";
 
 /**
- * A constant that indicates whether the environment the code is running is Cloudflare.
- * https://developers.cloudflare.com/workers/runtime-apis/web-standards/#navigatoruseragent
- */
-const isCloudflare = typeof globalThis !== "undefined" && globalThis?.navigator?.userAgent === "Cloudflare-Workers";
-
-/**
  * A constant that indicates which environment and version the SDK is running in.
  */
 export const RUNTIME: Runtime = evaluateRuntime();
 
 export interface Runtime {
-    type: "browser" | "web-worker" | "deno" | "bun" | "node" | "react-native" | "unknown" | "workerd";
+    type: "browser" | "web-worker" | "deno" | "bun" | "node" | "react-native" | "unknown";
     version?: string;
 }
 
@@ -76,12 +70,6 @@ function evaluateRuntime(): Runtime {
         return {
             type: "browser",
             version: window.navigator.userAgent,
-        };
-    }
-
-    if (isCloudflare) {
-        return {
-            type: "workerd",
         };
     }
 

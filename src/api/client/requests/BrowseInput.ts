@@ -7,7 +7,43 @@ import * as MultiOn from "../../index";
 /**
  * @example
  *     {
- *         cmd: "Find the top comment of the top post on Hackernews.",
+ *         cmd: "Find the top post on Hackernews.",
+ *         url: "https://news.ycombinator.com/"
+ *     }
+ *
+ * @example
+ *     {
+ *         cmd: "Find the top post on Hackernews.",
+ *         url: "https://news.ycombinator.com/"
+ *     }
+ *
+ * @example
+ *     {
+ *         cmd: "Find the top post on Hackernews.",
+ *         url: "https://news.ycombinator.com/"
+ *     }
+ *
+ * @example
+ *     {
+ *         cmd: "Find the top post on Hackernews.",
+ *         url: "https://news.ycombinator.com/"
+ *     }
+ *
+ * @example
+ *     {
+ *         cmd: "Find the top post on Hackernews.",
+ *         url: "https://news.ycombinator.com/"
+ *     }
+ *
+ * @example
+ *     {
+ *         cmd: "Find the top post on Hackernews.",
+ *         url: "https://news.ycombinator.com/"
+ *     }
+ *
+ * @example
+ *     {
+ *         cmd: "Find the top post on Hackernews.",
  *         url: "https://news.ycombinator.com/"
  *     }
  */
