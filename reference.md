@@ -408,7 +408,6 @@ Allows for browsing the web using detailed natural language instructions in a st
 ```ts
 await client.sessions.step("session_id", {
     cmd: "cmd",
-    stream: false,
 });
 ```
 

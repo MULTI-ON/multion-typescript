@@ -7,8 +7,7 @@ import * as MultiOn from "../../../../index";
 /**
  * @example
  *     {
- *         cmd: "cmd",
- *         stream: false
+ *         cmd: "cmd"
  *     }
  */
 export interface SessionsStepRequest {

@@ -53,7 +53,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.7",
+                "X-Fern-SDK-Version": "1.3.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -126,7 +126,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.7",
+                "X-Fern-SDK-Version": "1.3.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -209,8 +209,7 @@ export class Sessions {
      *
      * @example
      *     await client.sessions.step("session_id", {
-     *         cmd: "cmd",
-     *         stream: false
+     *         cmd: "cmd"
      *     })
      */
     public async step(
@@ -227,7 +226,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.7",
+                "X-Fern-SDK-Version": "1.3.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -310,7 +309,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.7",
+                "X-Fern-SDK-Version": "1.3.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -389,7 +388,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.7",
+                "X-Fern-SDK-Version": "1.3.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -462,7 +461,7 @@ export class Sessions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "multion",
-                "X-Fern-SDK-Version": "1.3.7",
+                "X-Fern-SDK-Version": "1.3.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
