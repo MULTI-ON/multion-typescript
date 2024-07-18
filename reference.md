@@ -311,6 +311,7 @@ await client.sessions.stepStream("string", {
         width: 1.1,
     },
     temperature: 1.1,
+    agentId: "string",
     mode: MultiOn.Mode.Fast,
     includeScreenshot: true,
 });

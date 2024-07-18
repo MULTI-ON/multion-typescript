@@ -14,6 +14,7 @@ export const CreateSessionInput: core.serialization.Schema<
 > = core.serialization.object({
     url: core.serialization.string(),
     local: core.serialization.boolean().optional(),
+    agentId: core.serialization.property("agent_id", core.serialization.string().optional()),
     mode: Mode.optional(),
     useProxy: core.serialization.property("use_proxy", core.serialization.boolean().optional()),
     browserParams: core.serialization.property("browser_params", CreateSessionInputBrowserParams.optional()),
@@ -24,6 +25,7 @@ export declare namespace CreateSessionInput {
     interface Raw {
         url: string;
         local?: boolean | null;
+        agent_id?: string | null;
         mode?: Mode.Raw | null;
         use_proxy?: boolean | null;
         browser_params?: CreateSessionInputBrowserParams.Raw | null;

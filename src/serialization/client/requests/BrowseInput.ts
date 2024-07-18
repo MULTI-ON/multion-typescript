@@ -16,6 +16,7 @@ export const BrowseInput: core.serialization.Schema<serializers.BrowseInput.Raw,
         maxSteps: core.serialization.property("max_steps", core.serialization.number().optional()),
         includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
         temperature: core.serialization.number().optional(),
+        agentId: core.serialization.property("agent_id", core.serialization.string().optional()),
         mode: Mode.optional(),
         useProxy: core.serialization.property("use_proxy", core.serialization.boolean().optional()),
     });
@@ -29,6 +30,7 @@ export declare namespace BrowseInput {
         max_steps?: number | null;
         include_screenshot?: boolean | null;
         temperature?: number | null;
+        agent_id?: string | null;
         mode?: Mode.Raw | null;
         use_proxy?: boolean | null;
     }

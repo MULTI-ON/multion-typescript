@@ -16,6 +16,7 @@ export const SessionsStepStreamRequest: core.serialization.Schema<
     url: core.serialization.string().optional(),
     browserParams: core.serialization.property("browser_params", SessionsStepStreamRequestBrowserParams.optional()),
     temperature: core.serialization.number().optional(),
+    agentId: core.serialization.property("agent_id", core.serialization.string().optional()),
     mode: Mode.optional(),
     includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
 });
@@ -26,6 +27,7 @@ export declare namespace SessionsStepStreamRequest {
         url?: string | null;
         browser_params?: SessionsStepStreamRequestBrowserParams.Raw | null;
         temperature?: number | null;
+        agent_id?: string | null;
         mode?: Mode.Raw | null;
         include_screenshot?: boolean | null;
     }

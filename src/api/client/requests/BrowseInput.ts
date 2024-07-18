@@ -26,6 +26,8 @@ export interface BrowseInput {
     includeScreenshot?: boolean;
     /** The temperature of model */
     temperature?: number;
+    /** The agent id to use for the session. */
+    agentId?: string;
     mode?: MultiOn.Mode;
     /** Boolean flag to use a proxy for the session (Default: False). Each Session gets a new Residential IP. */
     useProxy?: boolean;

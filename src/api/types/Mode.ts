@@ -3,12 +3,11 @@
  */
 
 /**
- * The mode you would like to use for the session. 'fast', 'standard', or 'ludicrous'.
+ * The mode you would like to use for the session. 'fast' or 'standard'
  */
-export type Mode = "fast" | "standard" | "ludicrous";
+export type Mode = "fast" | "standard";
 
 export const Mode = {
     Fast: "fast",
     Standard: "standard",
-    Ludicrous: "ludicrous",
 } as const;

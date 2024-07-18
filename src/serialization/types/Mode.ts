@@ -9,9 +9,8 @@ import * as core from "../../core";
 export const Mode: core.serialization.Schema<serializers.Mode.Raw, MultiOn.Mode> = core.serialization.enum_([
     "fast",
     "standard",
-    "ludicrous",
 ]);
 
 export declare namespace Mode {
-    type Raw = "fast" | "standard" | "ludicrous";
+    type Raw = "fast" | "standard";
 }

@@ -19,6 +19,8 @@ export interface SessionsStepRequest {
     browserParams?: MultiOn.SessionsStepRequestBrowserParams;
     /** The temperature of model */
     temperature?: number;
+    /** The agent id to use for the session. */
+    agentId?: string;
     mode?: MultiOn.Mode;
     includeScreenshot?: boolean;
 }

@@ -14,6 +14,7 @@ import * as MultiOn from "../../../../index";
  *             width: 1.1
  *         },
  *         temperature: 1.1,
+ *         agentId: "string",
  *         mode: MultiOn.Mode.Fast,
  *         includeScreenshot: true
  *     }
@@ -27,6 +28,8 @@ export interface SessionsStepStreamRequest {
     browserParams?: MultiOn.SessionsStepStreamRequestBrowserParams;
     /** The temperature of model */
     temperature?: number;
+    /** The agent id to use for the session. */
+    agentId?: string;
     mode?: MultiOn.Mode;
     includeScreenshot?: boolean;
 }
