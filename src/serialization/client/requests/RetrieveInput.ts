@@ -5,6 +5,7 @@
 import * as serializers from "../../index";
 import * as MultiOn from "../../../api/index";
 import * as core from "../../../core";
+import { Format } from "../../types/Format";
 
 export const RetrieveInput: core.serialization.Schema<serializers.RetrieveInput.Raw, MultiOn.RetrieveInput> =
     core.serialization.object({
@@ -13,7 +14,7 @@ export const RetrieveInput: core.serialization.Schema<serializers.RetrieveInput.
         sessionId: core.serialization.property("session_id", core.serialization.string().optional()),
         local: core.serialization.boolean().optional(),
         fields: core.serialization.list(core.serialization.string()).optional(),
-        format: core.serialization.stringLiteral("json").optional(),
+        format: Format.optional(),
         maxItems: core.serialization.property("max_items", core.serialization.number().optional()),
         fullPage: core.serialization.property("full_page", core.serialization.boolean().optional()),
         renderJs: core.serialization.property("render_js", core.serialization.boolean().optional()),
@@ -28,7 +29,7 @@ export declare namespace RetrieveInput {
         session_id?: string | null;
         local?: boolean | null;
         fields?: string[] | null;
-        format?: "json" | null;
+        format?: Format.Raw | null;
         max_items?: number | null;
         full_page?: boolean | null;
         render_js?: boolean | null;
