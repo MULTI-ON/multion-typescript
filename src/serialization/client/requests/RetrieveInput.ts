@@ -19,6 +19,7 @@ export const RetrieveInput: core.serialization.Schema<serializers.RetrieveInput.
         fullPage: core.serialization.property("full_page", core.serialization.boolean().optional()),
         renderJs: core.serialization.property("render_js", core.serialization.boolean().optional()),
         scrollToBottom: core.serialization.property("scroll_to_bottom", core.serialization.boolean().optional()),
+        mode: core.serialization.string().optional(),
         includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
     });
 
@@ -34,6 +35,7 @@ export declare namespace RetrieveInput {
         full_page?: boolean | null;
         render_js?: boolean | null;
         scroll_to_bottom?: boolean | null;
+        mode?: string | null;
         include_screenshot?: boolean | null;
     }
 }

@@ -32,6 +32,8 @@ export interface RetrieveInput {
     renderJs?: boolean;
     /** Flag to scroll to the bottom of the page (Default: False). If set to true, the page will be scrolled to the bottom for a maximum of 5 seconds before data is retrieved. */
     scrollToBottom?: boolean;
+    /** The mode you would like to use for the session. 'standard', 'fast' or 'ludicrous' */
+    mode?: string;
     /** Flag to include a screenshot with the response. (Default: False) */
     includeScreenshot?: boolean;
 }
