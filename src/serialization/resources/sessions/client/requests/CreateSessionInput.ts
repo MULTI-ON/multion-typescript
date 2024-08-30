@@ -19,6 +19,10 @@ export const CreateSessionInput: core.serialization.Schema<
     useProxy: core.serialization.property("use_proxy", core.serialization.boolean().optional()),
     browserParams: core.serialization.property("browser_params", CreateSessionInputBrowserParams.optional()),
     includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
+    optionalParams: core.serialization.property(
+        "optional_params",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
 });
 
 export declare namespace CreateSessionInput {
@@ -30,5 +34,6 @@ export declare namespace CreateSessionInput {
         use_proxy?: boolean | null;
         browser_params?: CreateSessionInputBrowserParams.Raw | null;
         include_screenshot?: boolean | null;
+        optional_params?: Record<string, unknown> | null;
     }
 }

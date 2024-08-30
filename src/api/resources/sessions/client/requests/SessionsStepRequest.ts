@@ -23,4 +23,6 @@ export interface SessionsStepRequest {
     agentId?: string;
     mode?: MultiOn.Mode;
     includeScreenshot?: boolean;
+    /** Additional optional parameters for the session. */
+    optionalParams?: Record<string, unknown>;
 }

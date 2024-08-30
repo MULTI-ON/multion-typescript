@@ -36,4 +36,6 @@ export interface RetrieveInput {
     mode?: string;
     /** Flag to include a screenshot with the response. (Default: False) */
     includeScreenshot?: boolean;
+    /** Additional optional parameters for the session. */
+    optionalParams?: Record<string, unknown>;
 }

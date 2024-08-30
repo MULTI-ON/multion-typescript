@@ -23,4 +23,6 @@ export interface CreateSessionInput {
     /** Object containing height and width for the browser screen size. */
     browserParams?: MultiOn.CreateSessionInputBrowserParams;
     includeScreenshot?: boolean;
+    /** Additional optional parameters for the session. */
+    optionalParams?: Record<string, unknown>;
 }

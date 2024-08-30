@@ -16,7 +16,12 @@ import * as MultiOn from "../../../../index";
  *         temperature: 1.1,
  *         agentId: "string",
  *         mode: MultiOn.Mode.Fast,
- *         includeScreenshot: true
+ *         includeScreenshot: true,
+ *         optionalParams: {
+ *             "string": {
+ *                 "key": "value"
+ *             }
+ *         }
  *     }
  */
 export interface SessionsStepStreamRequest {
@@ -32,4 +37,6 @@ export interface SessionsStepStreamRequest {
     agentId?: string;
     mode?: MultiOn.Mode;
     includeScreenshot?: boolean;
+    /** Additional optional parameters for the session. */
+    optionalParams?: Record<string, unknown>;
 }

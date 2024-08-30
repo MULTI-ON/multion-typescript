@@ -19,6 +19,10 @@ export const SessionsStepStreamRequest: core.serialization.Schema<
     agentId: core.serialization.property("agent_id", core.serialization.string().optional()),
     mode: Mode.optional(),
     includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
+    optionalParams: core.serialization.property(
+        "optional_params",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
 });
 
 export declare namespace SessionsStepStreamRequest {
@@ -30,5 +34,6 @@ export declare namespace SessionsStepStreamRequest {
         agent_id?: string | null;
         mode?: Mode.Raw | null;
         include_screenshot?: boolean | null;
+        optional_params?: Record<string, unknown> | null;
     }
 }

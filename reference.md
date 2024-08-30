@@ -314,6 +314,11 @@ await client.sessions.stepStream("string", {
     agentId: "string",
     mode: MultiOn.Mode.Fast,
     includeScreenshot: true,
+    optionalParams: {
+        string: {
+            key: "value",
+        },
+    },
 });
 ```
 

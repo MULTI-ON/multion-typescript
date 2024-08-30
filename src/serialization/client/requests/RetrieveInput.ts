@@ -21,6 +21,10 @@ export const RetrieveInput: core.serialization.Schema<serializers.RetrieveInput.
         scrollToBottom: core.serialization.property("scroll_to_bottom", core.serialization.boolean().optional()),
         mode: core.serialization.string().optional(),
         includeScreenshot: core.serialization.property("include_screenshot", core.serialization.boolean().optional()),
+        optionalParams: core.serialization.property(
+            "optional_params",
+            core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+        ),
     });
 
 export declare namespace RetrieveInput {
@@ -37,5 +41,6 @@ export declare namespace RetrieveInput {
         scroll_to_bottom?: boolean | null;
         mode?: string | null;
         include_screenshot?: boolean | null;
+        optional_params?: Record<string, unknown> | null;
     }
 }
